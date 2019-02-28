@@ -1,3 +1,4 @@
+package flexiblecash;
 
 public class NYTaxCalculator implements CalculateTax{
 

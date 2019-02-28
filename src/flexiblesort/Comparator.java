@@ -5,7 +5,7 @@ package flexiblesort;
  * flexible so that it can be used to sort any types of data.
  * 
  * @author kimvcp
- *
+ * 
  */
 public interface Comparator {
 	int compare(Object o1, Object o2);

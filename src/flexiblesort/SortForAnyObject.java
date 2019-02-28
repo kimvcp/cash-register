@@ -1,19 +1,23 @@
 package flexiblesort;
 
 public class SortForAnyObject {
-	public static void sort(Object[] data, Comparator cmp) {
+	public void sort(Object[] data, Comparator cmp) {
 
-		for (int i = 0; i < data.length - 1; i++) {// i แบ่งส่วนเรียงแล้วกับยังไม่เรียง
-			int minPos = i;
-			for (int j = i + 1; j < data.length; j++) { // วนลูปหาค่าน้อยสุด
-				if (cmp.compare(data[j], data[minPos]) < 0) {
-					minPos = j;
+		// i divides array into two parts: already-sorted, not sorted
+		for (int i = 0; i < data.length - 1; i++) {
+			int minPosition = i;
+
+			// loop to find index containing a minimum value
+			for (int j = i + 1; j < data.length; j++) {
+				if (cmp.compare(data[j], data[minPosition]) < 0) {
+					minPosition = j;
 				}
 			}
-			// สลับข้อมูลใน minPos และ i ทำให้ข้อมูลใน minPos ไปอยู่ส่วนที่เรียงแล้ว
-			Object temp = data[minPos];
-			data[minPos] = data[i];
-			data[i] = temp;
+			// swap minPos and i so that data in minPos index will
+			// be the already-sorted part
+			Object object = data[minPosition];
+			data[minPosition] = data[i];
+			data[i] = object;
 		}
 
 	}
